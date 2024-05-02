@@ -4,28 +4,28 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="./styles.css">
     </head>
+
     <body>
-        <button id="startGame">Start Game</button><br><br>
-        <div>
-            <button id="rock">Rock</button>
-            <button id="paper">Paper</button>
-            <button id="scissor">Scissor</button>
-        </div><br>
-
-        <div id="score">
-            <div id="computerScore">
-                <b>Computer Score:</b>
-            </div>
+        <!-- <button id="startGame">Start Game</button><br><br> -->
+        <div class="score">
             <div id="playerScore">
-                <b>Player Score:</b>
+                <span>You:</span>
             </div>
-        </div>
-
-        <div id="result">
-            <b>Result:</b>
+            <div id="computerScore">
+                <span>Computer:</span>
+            </div>
         </div>
         
-        <script src="script.js"></script>
+        <div class="buttons">
+            <button id="rock"><img src="./svg/hand-fist-thin-svgrepo-com.svg" alt="Rock"></button>
+            <button id="paper"><img src="./svg/palm-svgrepo-com.svg" alt="Paper"></button>
+            <button id="scissor"><img src="./svg/peace-sign-svgrepo-com.svg" alt="Scissor"></button>
+        </div>
+        
+        <div class="result"></div>
+
+        <script src="./script.js"></script>
     </body>
 </html>
