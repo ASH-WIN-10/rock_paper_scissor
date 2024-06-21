@@ -35,35 +35,24 @@ body {
 button:not(#dialogBtn) {
     width: 200px;
     height: 200px;
-    /* background-color: red; */
+    background-color: transparent;
     border-color: transparent;
     border-radius: 50%;
     transition: all 0.1s;
 }
 
-#rock > img {
-    width: 200px;
-    height: 200px;
-}
-
-#paper > img {
-    margin-right: 10px;
-    width: 160px;
-    height: 160px;
-}
-
-#scissor > img {
+img {
     width: 160px;
     height: 160px;
 }
 
 button:hover {
     cursor: pointer;
-    background-color: #cedbdb;
+    transform: scale(1.05);
 }
 
 button:active {
-    transform: scale(0.95);
+    transform: scale(1);
 }
 
 .result {
