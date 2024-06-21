@@ -26,6 +26,18 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+function finalResult(win) {
+    const finalResultText = document.querySelector('dialog > span');
+    if (win === 'true')
+        finalResultText.textContent = "You Win!!";
+    else if (win === 'false')
+        finalResultText.textContent = "You Lose!!";
+    else
+        finalResultText.textContent = "It's a tie!!";
+    
+    dialog.showModal();
+}
+
 
 let playerSelection;
 let playerScore = 0;
@@ -35,7 +47,7 @@ const buttons = document.querySelectorAll('.buttons');
 
 const resultDiv = document.querySelector('.result');
 let result = document.createElement('span');
-result.textContent = 'Result will appear here...';
+result.textContent = 'Result: ...';
 resultDiv.appendChild(result);
 
 const playerScoreDiv = document.querySelector('#playerScore');
@@ -49,28 +61,34 @@ computerScoreDiv.appendChild(computerScoreText);
 
 buttons.forEach(selection => {
     selection.addEventListener('click', (e) => {
-        if ((computerScore === 5) || (playerScore === 5)) {
-            if (playerScore > computerScore)
-                alert(`You Win!!`);
-    
-            else if (playerScore < computerScore)
-                alert(`You Lose!!`);
-    
-            else
-                alert(`It's a Tie!!`);
-
-            playerScore = playerScoreText.textContent = 0;
-            computerScore = computerScoreText.textContent = 0;
-            result.textContent = 'Result will appear here...'
-
-            return;
-        }
-        
         playerSelection = e.target.getAttribute('alt')
         
         playRound(playerSelection, getComputerSelection());
         
         playerScoreText.textContent = playerScore;
-        computerScoreText.textContent = computerScore; 
+        computerScoreText.textContent = computerScore;
+
+        if ((computerScore === 5) || (playerScore === 5)) {
+            if (playerScore > computerScore)
+                finalResult('true');
+    
+            else if (playerScore < computerScore)
+                finalResult('false');
+    
+            else
+                finalResult('tie');
+        }
     });
+});
+
+
+// Closing dialog logic
+const dialog = document.querySelector('.finalResult');
+const closeButton = document.querySelector('#dialogBtn');
+
+closeButton.addEventListener('click', () => {
+    playerScore = playerScoreText.textContent = 0;
+    computerScore = computerScoreText.textContent = 0;
+    result.textContent = 'Result: ...'
+    dialog.close();
 });

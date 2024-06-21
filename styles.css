@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    overflow: hidden;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     overflow-x: hidden;
     display: flex;
@@ -13,10 +14,10 @@ body {
 .score {
     text-align: center;
     padding: 70px;
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: space-evenly;
-    background-color: darkslategrey;
+    background-color: #2f4f4f;
     color: aliceblue;
 }
 
@@ -25,17 +26,19 @@ body {
 }
 
 .buttons {
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: space-evenly;
     padding: 70px;
 }
 
-button {
+button:not(#dialogBtn) {
     width: 200px;
     height: 200px;
+    /* background-color: red; */
     border-color: transparent;
-    border-radius: 10%;
+    border-radius: 50%;
+    transition: all 0.1s;
 }
 
 #rock > img {
@@ -56,11 +59,15 @@ button {
 
 button:hover {
     cursor: pointer;
-    background-color: rgb(225, 220, 220);  
+    background-color: #cedbdb;
+}
+
+button:active {
+    transform: scale(0.95);
 }
 
 .result {
-    width: 100%;
+    width: 100vw;
     text-align: center;
     padding: 80px;
     background-color: darkslategrey;
@@ -68,4 +75,39 @@ button:hover {
     font-size: 28px;
     font-weight: bold;
     white-space: pre;
+}
+
+dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    border: none;
+    height: 25vh;
+    width: 25vw;
+}
+
+dialog {
+    border-radius: 20px;
+}
+
+dialog:not([open]) {
+    display: none;
+}
+
+dialog[open]::backdrop {
+    backdrop-filter: blur(5px);
+}
+
+dialog > span {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+#dialogBtn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 100vw;
+    font-size: 18px;
 }
